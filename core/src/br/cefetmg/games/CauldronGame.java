@@ -87,8 +87,10 @@ public class CauldronGame extends ApplicationAdapter {
 
         // solicita o carregamento dos efeitos de partículas
         ParticleEffectLoader.ParticleEffectLoadParameter loadParam = new ParticleEffectLoader.ParticleEffectLoadParameter(sistemaParticulas.getBatches());
-        assets.load("fogo.pfx", ParticleEffect.class, loadParam);
-        assets.load("bolhas.pfx", ParticleEffect.class, loadParam);
+        //assets.load("fogo_do_amor.pfx", ParticleEffect.class, loadParam);
+        assets.load("fogo_da_realeza.pfx", ParticleEffect.class, loadParam);
+        //assets.load("bolhas.pfx", ParticleEffect.class, loadParam);        
+        assets.load("bolhas_alteradas.pfx", ParticleEffect.class, loadParam);
         
         // solicita carregamento da música
         musica = Gdx.audio.newMusic(Gdx.files.internal("zelda-potion-shop.mp3"));
@@ -104,7 +106,8 @@ public class CauldronGame extends ApplicationAdapter {
         sopa = caldeirao.getNode("topoDaSopa");
 
         // instancia, configura e dá início ao efeito de fogo
-        fogo = ((ParticleEffect) assets.get("fogo.pfx")).copy();
+        //fogo = ((ParticleEffect) assets.get("fogo_do_amor.pfx")).copy();
+        fogo = ((ParticleEffect) assets.get("fogo_da_realeza.pfx")).copy();
         fogo.init();
         fogo.start();
         fogo.translate(new Vector3(0, 0.1f, 0));
@@ -112,9 +115,13 @@ public class CauldronGame extends ApplicationAdapter {
 
         // instancia, configura e dá início ao efeito das bolhas
         // use o campo ParticleEffect bolhas definido na linha #38
-        // ...
-        // ...
-        // ...
+        bolhas = ((ParticleEffect) assets.get("bolhas_alteradas.pfx")).copy();
+        bolhas.init();
+        bolhas.start();
+        
+        bolhas.translate(new Vector3(0, 0.8f, 0));
+        sistemaParticulas.add(bolhas);
+        //sistemaParticulas.add(bolhas);
         
         // começa a música
         musica.setLooping(true);
